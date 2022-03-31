@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function QuestionTypeMultipleChoice(props) {
 
     return (
@@ -8,7 +10,7 @@ export default function QuestionTypeMultipleChoice(props) {
             {props.question.isCorrect}
             {
                 props.question.random_answers.map(item => {
-                    return <RadioButton value={item} label={item} handleChange={props.handleChange} />
+                    return <RadioButton value={item} label={item} handleChange={props.handleChange} currentQuestion={props.currentQuestion} />
                 })
             }
         </div>
@@ -27,15 +29,44 @@ function getAnswers(obj) {
 }
 
 
-function RadioButton(props) {
-    return (
-        <div className="form-check">
-            <input className="form-check-input" type="radio" name="answers" id="flexRadioDefault1" value={props.value} onChange={props.handleChange} />
-            <label className="form-check-label" htmlFor={props.value}>
-                {props.value}
-            </label>
-        </div>
-    )
+class RadioButton extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            checked: false
+        }
+        this.checkRadioButton = this.checkRadioButton.bind(this);
+    }
+
+    checkRadioButton() {
+        this.setState(prevState => {
+            return {
+                checked: true
+            }
+        })
+    }
+
+    shouldComponentUpdate(prevProps) {
+        
+    }
+
+    render() {
+        return (
+            <div className="form-check">
+                <input 
+                    className="form-check-input" 
+                    type="radio" 
+                    name={"answers-"+this.props.currentQuestion} 
+                    id="flexRadioDefault1" 
+                    value={this.props.value} 
+                    onChange={this.props.handleChange} 
+                />
+                <label className="form-check-label" htmlFor={this.props.value}>
+                    {this.props.value}
+                </label>
+            </div>
+        )
+    }
 }
 
 
