@@ -110,11 +110,11 @@ class App extends React.Component {
     let bool = this.getCurrentQuestionObj().correct_answer === val;
     console.log(val, bool)
     let index = this.state.currentQuestion;
-    this.setState(prevState => {
-      prevState.currentQuiz.questions[index].isCorrect = bool;
-      return {
-        currentQuiz: prevState.currentQuiz
-      }
+    let newObj = this.state.currentQuiz;
+    newObj.questions[index].isCorrect = bool;
+    console.log(newObj)
+    this.setState({
+      currentQuiz: newObj
     })
   }
 
