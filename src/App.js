@@ -70,7 +70,23 @@ class App extends React.Component {
     let updateFunc = (res) => {
       console.log(res)
       //scramble the questions
-      res.data.results
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function getAnswers(obj) {
+        let answers = [];
+        answers = [...answers, ...obj.incorrect_answers];
+        let arrayLength = obj.incorrect_answers.length+1
+        let randomNum = getRandomInt(0, arrayLength-1);
+        answers.splice(randomNum, 0, obj.correct_answer);
+        // console.log(answers)
+        return answers;
+      }
+      res.data.results.forEach(item => {
+        item.random_answers = getAnswers(item)
+      })
       this.setState({
         currentQuiz: {
           questions: res.data.results,
