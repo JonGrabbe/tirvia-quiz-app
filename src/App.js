@@ -113,6 +113,7 @@ class App extends React.Component {
     let newObj = this.state.currentQuiz;
     newObj.questions[index].isCorrect = bool;
     newObj.questions[index].isAnswered = true;
+    newObj.questions[index].userAnswer = val;
     console.log(newObj)
     this.setState({
       currentQuiz: newObj

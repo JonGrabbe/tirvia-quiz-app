@@ -10,7 +10,7 @@ export default function QuestionTypeMultipleChoice(props) {
             {props.question.isCorrect}
             {
                 props.question.random_answers.map(item => {
-                    return <RadioButton value={item} label={item} handleChange={props.handleChange} currentQuestion={props.currentQuestion} />
+                    return <RadioButton value={item} label={item} handleChange={props.handleChange} question={props.question} />
                 })
             }
         </div>
@@ -38,17 +38,10 @@ class RadioButton extends React.Component {
         this.checkRadioButton = this.checkRadioButton.bind(this);
     }
 
-    checkRadioButton() {
-        this.setState(prevState => {
-            return {
-                checked: true
-            }
-        })
+    checkRadioButton(e) {
+       console.log('sdsdds')
     }
 
-    shouldComponentUpdate(prevProps) {
-        
-    }
 
     render() {
         return (
@@ -56,10 +49,11 @@ class RadioButton extends React.Component {
                 <input 
                     className="form-check-input" 
                     type="radio" 
-                    name={"answers-"+this.props.currentQuestion} 
+                    name={"answers"} 
                     id="flexRadioDefault1" 
                     value={this.props.value} 
-                    onChange={this.props.handleChange} 
+                    onChange={this.props.handleChange}
+                    checked={this.props.question.userAnswer === this.props.value} 
                 />
                 <label className="form-check-label" htmlFor={this.props.value}>
                     {this.props.value}
