@@ -3,14 +3,24 @@ import './App.css';
 import axios from 'axios';
 import Start from './StartMenu';
 import Header from './header/Header';
+import Quiz from './quiz/Quiz';
 import './css/main.scss';
 
+
+/* 
+  {
+    score:
+    time:
+    questions: [{}...]
+
+  }
+*/
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentQuiz: [],
+      currentQuiz: undefined,
       currentQuestion: undefined,
       history: [],
 
@@ -37,7 +47,8 @@ class App extends React.Component {
     this.setData = this.setData.bind(this);
     this.getCategoryId = this.getCategoryId.bind(this);
     this.getDifficulty = this.getDifficulty.bind(this);
-    this.getQuestionType = this.getQuestionType.bind(this); 
+    this.getQuestionType = this.getQuestionType.bind(this);
+    this.createNewQuiz = this.createNewQuiz.bind(this); 
   }
 
   setData(data) {
@@ -45,9 +56,22 @@ class App extends React.Component {
       todos: data
     })
   }
+
   createNewQuiz() {
     //gets the url from state and makes a request to the api
     //and then changes the currentQuiz propery with the relevant value
+    let url = this.state.string();
+    let updateFunc = (res) => {
+      console.log(res)
+      this.setState({
+        currentQuiz: {
+          question: res.data.results,
+          responseCode: res.data.response_code
+        } 
+      })
+    }
+    axios.get(url)
+      .then(res => updateFunc(res))
   }
   
   computeScore() {
@@ -75,7 +99,7 @@ class App extends React.Component {
 
   getDifficulty(e) {
     let val = e.currentTarget.value;
-    console.log(val)
+    // console.log(val)
     this.setState({
       difficulty: val
     })
@@ -83,7 +107,10 @@ class App extends React.Component {
 
   getQuestionType(e) {
     let val = e.currentTarget.value;
-    console.log(val);
+    // console.log(val);
+    this.setState({
+      type: val
+    })
 
   }
 
@@ -106,7 +133,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Start getCategoryId={this.getCategoryId} getDifficulty={this.getDifficulty} getQuestionType={this.getQuestionType} />
+        <Start getCategoryId={this.getCategoryId} getDifficulty={this.getDifficulty} getQuestionType={this.getQuestionType} createQuiz={this.createNewQuiz} />
       </div>
     );
   }

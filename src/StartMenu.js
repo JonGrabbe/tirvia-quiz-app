@@ -57,6 +57,8 @@ export default class Start extends React.Component {
                             })
                         }
                     </Select>
+
+                    <StartNewQuizButton handleClick={this.props.createQuiz} />
                 </div>
             </div>
         );
@@ -66,7 +68,7 @@ export default class Start extends React.Component {
 
 function Select(props) {
     return (
-        <div className="col">
+        <div className="col-md-4 select">
             <select className="form-select form-select-sm" aria-label=".form-select-sm example" onChange={props.handleChange}>
                 {props.children}
             </select>
@@ -82,3 +84,13 @@ function Option(props) {
     )
 }
 
+
+function StartNewQuizButton(props) {
+    return (
+        <div className="start-new-quiz-container">
+            <button className="new-quiz-button" onClick={props.handleClick}>
+                Start new quiz
+            </button>
+        </div>
+    );
+}

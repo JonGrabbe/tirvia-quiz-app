@@ -1,6 +1,12 @@
 $main-color: #B586CF;
 $main-text-color: white;
 
-@import 'header';
+// button reset
+button {
+    border: none;
+    padding: 0;
+}
 
+@import 'header';
+@import 'start-menu';
 

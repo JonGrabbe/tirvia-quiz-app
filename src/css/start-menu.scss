@@ -1,0 +1,25 @@
+
+.start-menu-container {
+    margin-top: 4rem;
+    @media (max-width: 768px) {
+        .select {
+            margin-top: .7rem;
+        }
+    }
+}
+
+.start-new-quiz-container {
+    margin-top: 35rem;
+    position: absolute;
+    bottom: 20vh;
+    left: 0;
+    right: 0;
+}
+.new-quiz-button {
+    background-color: $main-color;
+    color: $main-text-color;
+    padding: 1rem;
+    width: 35%;
+    max-width: 25rem;
+    min-width: 15rem;
+}
