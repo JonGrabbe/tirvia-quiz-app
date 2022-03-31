@@ -5,6 +5,7 @@ import Start from './StartMenu';
 import Header from './header/Header';
 import Quiz from './quiz/Quiz';
 import './css/main.scss';
+import { type } from '@testing-library/user-event/dist/type';
 
 
 /* 
@@ -21,7 +22,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       currentQuiz: undefined,
-      currentQuestion: undefined,
+      currentQuestion: 0,
       history: [],
 
       categoryId: '',
@@ -49,7 +50,9 @@ class App extends React.Component {
     this.getDifficulty = this.getDifficulty.bind(this);
     this.getQuestionType = this.getQuestionType.bind(this);
     this.createNewQuiz = this.createNewQuiz.bind(this);
-    this.startNewQuiz = this.startNewQuiz.bind(this); 
+    this.startNewQuiz = this.startNewQuiz.bind(this);
+    this.prev = this.prev.bind(this);
+    this.next = this.next.bind(this); 
   }
 
   setData(data) {
@@ -66,9 +69,9 @@ class App extends React.Component {
       console.log(res)
       this.setState({
         currentQuiz: {
-          question: res.data.results,
+          questions: res.data.results,
           responseCode: res.data.response_code
-        } 
+        }
       })
     }
     axios.get(url)
@@ -82,7 +85,15 @@ class App extends React.Component {
 
   }
   next() {
-
+    console.log(this.state.currentQuiz.questions.length-1)
+    console.log(this.state.currentQuestion)
+    if(this.state.currentQuestion < this.state.currentQuiz.questions.length-1) {
+      this.setState(prevState => {
+        return {
+          currentQuestion: prevState.currentQuestion+1  
+        }
+      })
+    }
   }
   prev() {
 
@@ -148,7 +159,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         {
-          this.state.currentQuiz ? <Quiz newQuiz={this.startNewQuiz} /> : elm
+          this.state.currentQuiz ? <Quiz newQuiz={this.startNewQuiz} currentQuiz={this.state.currentQuiz} next={this.next} /> : elm
         }
       </div>
     );
