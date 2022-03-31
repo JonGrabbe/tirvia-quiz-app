@@ -1,5 +1,6 @@
 import React from "react";
 import StartNewQuizButton from "./NewQuizButton";
+import QuestionTypeMultipleChoice from "./QuestionTypeMultipleChoice";
 
 export default class Quiz extends React.Component {
     constructor(props) {
@@ -9,18 +10,12 @@ export default class Quiz extends React.Component {
     
 
     render() {
+        let questionObj = this.props.currentQuiz.questions[this.props.currentQuestion];
+        console.log(questionObj)
         return (
             <div className="quiz">
-                hello
-                {
-                    this.props.currentQuiz.questions.map(item => {
-                        return <p>{item.question}</p>
-                    })
-                }
+                <QuestionTypeMultipleChoice handleChange={this.props.checkAnswer} question={questionObj} />
                 <StartNewQuizButton handleClick={this.props.newQuiz} />
-                <button onClick={this.props.next}>
-                    next
-                </button>
             </div>
         )
     }

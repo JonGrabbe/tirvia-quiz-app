@@ -52,7 +52,9 @@ class App extends React.Component {
     this.createNewQuiz = this.createNewQuiz.bind(this);
     this.startNewQuiz = this.startNewQuiz.bind(this);
     this.prev = this.prev.bind(this);
-    this.next = this.next.bind(this); 
+    this.next = this.next.bind(this);
+    this.getCurrentQuestionObj = this.getCurrentQuestionObj.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this); 
   }
 
   setData(data) {
@@ -67,6 +69,8 @@ class App extends React.Component {
     let url = this.state.string();
     let updateFunc = (res) => {
       console.log(res)
+      //scramble the questions
+      res.data.results
       this.setState({
         currentQuiz: {
           questions: res.data.results,
@@ -81,9 +85,23 @@ class App extends React.Component {
   computeScore() {
 
   }
-  checkAnswer() {
-
+  getCurrentQuestionObj() {
+    return this.state.currentQuiz.questions[this.state.currentQuestion];
   }
+  checkAnswer(e) {
+    let val = e.currentTarget.value;
+    // console.log(val)
+    let bool = this.getCurrentQuestionObj().correct_answer === val;
+    console.log(val, bool)
+    let index = this.state.currentQuestion;
+    this.setState(prevState => {
+      prevState.currentQuiz.questions[index].isCorrect = bool;
+      return {
+        currentQuiz: prevState.currentQuiz
+      }
+    })
+  }
+
   next() {
     console.log(this.state.currentQuiz.questions.length-1)
     console.log(this.state.currentQuestion)
@@ -103,6 +121,7 @@ class App extends React.Component {
     //from the currentQuiz property
     this.setState((prevState) => {
       return {
+        currentQuestion: 0,
         history: [...prevState.history, prevState.currentQuiz],
         currentQuiz: undefined
       }
@@ -161,7 +180,8 @@ class App extends React.Component {
         newQuiz={this.startNewQuiz} 
         currentQuiz={this.state.currentQuiz} 
         currentQuestion={this.state.currentQuestion} 
-        next={this.next} 
+        next={this.next}
+        checkAnswer={this.checkAnswer} 
       />
     );
     return (
