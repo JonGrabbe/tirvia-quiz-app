@@ -90,8 +90,11 @@ class App extends React.Component {
   startNewQuiz() {
     // pushed object in this.state.currentQuiz into the history array and then removes the object
     //from the currentQuiz property
-    this.setState({
-      
+    this.setState((prevState) => {
+      return {
+        history: [...prevState.history, prevState.currentQuiz],
+        currentQuiz: undefined
+      }
     })
   }
 
@@ -139,13 +142,13 @@ class App extends React.Component {
         getCategoryId={this.getCategoryId} 
         getDifficulty={this.getDifficulty} 
         getQuestionType={this.getQuestionType} 
-        createQuiz={this.createNewQuiz} 
+        createQuiz={this.createNewQuiz}
       />)
     return (
       <div className="App">
         <Header />
         {
-          this.state.currentQuiz ? <Quiz /> : elm
+          this.state.currentQuiz ? <Quiz newQuiz={this.startNewQuiz} /> : elm
         }
       </div>
     );
