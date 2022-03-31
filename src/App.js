@@ -48,7 +48,8 @@ class App extends React.Component {
     this.getCategoryId = this.getCategoryId.bind(this);
     this.getDifficulty = this.getDifficulty.bind(this);
     this.getQuestionType = this.getQuestionType.bind(this);
-    this.createNewQuiz = this.createNewQuiz.bind(this); 
+    this.createNewQuiz = this.createNewQuiz.bind(this);
+    this.startNewQuiz = this.startNewQuiz.bind(this); 
   }
 
   setData(data) {
@@ -87,7 +88,11 @@ class App extends React.Component {
 
   }
   startNewQuiz() {
-
+    // pushed object in this.state.currentQuiz into the history array and then removes the object
+    //from the currentQuiz property
+    this.setState({
+      
+    })
   }
 
   getCategoryId(e) {
@@ -130,10 +135,18 @@ class App extends React.Component {
   }
   
   render() {
+    let elm = (<Start 
+        getCategoryId={this.getCategoryId} 
+        getDifficulty={this.getDifficulty} 
+        getQuestionType={this.getQuestionType} 
+        createQuiz={this.createNewQuiz} 
+      />)
     return (
       <div className="App">
         <Header />
-        <Start getCategoryId={this.getCategoryId} getDifficulty={this.getDifficulty} getQuestionType={this.getQuestionType} createQuiz={this.createNewQuiz} />
+        {
+          this.state.currentQuiz ? <Quiz /> : elm
+        }
       </div>
     );
   }
