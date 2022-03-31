@@ -149,17 +149,26 @@ class App extends React.Component {
   }
   
   render() {
-    let elm = (<Start 
+    let start = (
+      <Start 
         getCategoryId={this.getCategoryId} 
         getDifficulty={this.getDifficulty} 
         getQuestionType={this.getQuestionType} 
         createQuiz={this.createNewQuiz}
       />)
+    let quiz = (
+      <Quiz 
+        newQuiz={this.startNewQuiz} 
+        currentQuiz={this.state.currentQuiz} 
+        currentQuestion={this.state.currentQuestion} 
+        next={this.next} 
+      />
+    );
     return (
       <div className="App">
         <Header />
         {
-          this.state.currentQuiz ? <Quiz newQuiz={this.startNewQuiz} currentQuiz={this.state.currentQuiz} next={this.next} /> : elm
+          this.state.currentQuiz ? quiz  : start
         }
       </div>
     );
