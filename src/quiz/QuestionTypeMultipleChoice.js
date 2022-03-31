@@ -2,6 +2,8 @@ export default function QuestionTypeMultipleChoice(props) {
 
     return (
         <div className="question-container">
+            <p>{props.question.question}</p>
+            {props.question.isCorrect ? <p>{props.question.isCorrect}</p> : null}
             {
                 props.question.random_answers.map(item => {
                     return <RadioButton value={item} label={item} handleChange={props.handleChange} />
