@@ -116,6 +116,7 @@ class App extends React.Component {
     this.setState({
       currentQuiz: newObj
     })
+    this.forceUpdate()
   }
 
   next() {
@@ -197,7 +198,7 @@ class App extends React.Component {
         currentQuiz={this.state.currentQuiz} 
         currentQuestion={this.state.currentQuestion} 
         next={this.next}
-        checkAnswer={this.checkAnswer} 
+        checkAnswer={this.checkAnswer}
       />
     );
     return (

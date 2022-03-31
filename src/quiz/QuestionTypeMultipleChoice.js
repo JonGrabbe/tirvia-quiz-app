@@ -3,7 +3,8 @@ export default function QuestionTypeMultipleChoice(props) {
     return (
         <div className="question-container">
             <p>{props.question.question}</p>
-            {/* {props.question.isCorrect === true || false ? <p>{props.question.isCorrect}</p> : null} */}
+            {props.question.isCorrect === true ? <p>correct</p> : null}
+            {props.question.isCorrect === false ? <p>incorrect</p> : null}
             {props.question.isCorrect}
             {
                 props.question.random_answers.map(item => {

@@ -1,6 +1,7 @@
 import React from "react";
 import StartNewQuizButton from "./NewQuizButton";
 import QuestionTypeMultipleChoice from "./QuestionTypeMultipleChoice";
+import NavButtons from "../navbuttons/NavButtons";
 
 export default class Quiz extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export default class Quiz extends React.Component {
         return (
             <div className="quiz">
                 <QuestionTypeMultipleChoice handleChange={this.props.checkAnswer} question={questionObj} />
+                <NavButtons next={this.props.next} />
                 <StartNewQuizButton handleClick={this.props.newQuiz} />
             </div>
         )
