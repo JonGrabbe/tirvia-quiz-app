@@ -6,6 +6,11 @@ button {
     border: none;
     padding: 0;
 }
+.button {
+    padding: 1rem 3rem;
+    background-color: $main-color;
+    color: $main-text-color;
+}
 
 @import 'header';
 @import 'start-menu';

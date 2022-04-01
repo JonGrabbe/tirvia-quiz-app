@@ -1,16 +1,33 @@
 
 .quiz {
     border: 1px solid lime;
-    margin: 5rem;
-    padding: 2rem;
+    margin: 1rem;
+    padding: .5rem;
     .question {
         text-align: left;
     }
     .answer-item {
         padding: 1rem;
         background-color: lightgrey;
+        max-width: 400px;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: ;
         input {
-            margin-left: 20px;
+            margin-left: 1px;
         }
+    }
+    .nav-buttons-container {
+        max-width: 400px;
+        display: flex;
+        justify-content: space-between;
+        .button {
+            width: 49%;
+        }
+    }
+    .check-answer-button {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 5px;
     }
 }
