@@ -1,7 +1,16 @@
 
-.question-container {
+.quiz {
     border: 1px solid lime;
-    .form-check {
-        
+    margin: 5rem;
+    padding: 2rem;
+    .question {
+        text-align: left;
+    }
+    .answer-item {
+        padding: 1rem;
+        background-color: lightgrey;
+        input {
+            margin-left: 20px;
+        }
     }
 }

@@ -30,6 +30,9 @@ export default class Quiz extends React.Component {
             <div className="quiz">
                 <QuestionTypeMultipleChoice handleChange={this.props.checkAnswer} question={this.state.questionObj} currentQuestion={this.props.currentQuestion} />
                 <NavButtons next={this.props.next} />
+                <button className="button check-answer-button">
+                    check answer
+                </button>
                 <StartNewQuizButton handleClick={this.props.newQuiz} />
             </div>
         )

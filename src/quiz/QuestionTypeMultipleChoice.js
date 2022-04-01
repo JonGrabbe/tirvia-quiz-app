@@ -4,7 +4,7 @@ export default function QuestionTypeMultipleChoice(props) {
 
     return (
         <div className="question-container">
-            <p>{props.question.question}</p>
+            <p className="question">{props.question.question}</p>
             {props.question.isCorrect === true ? <p>correct</p> : null}
             {props.question.isCorrect === false ? <p>incorrect</p> : null}
             {props.question.isCorrect}
@@ -45,7 +45,7 @@ class RadioButton extends React.Component {
 
     render() {
         return (
-            <div className="form-check">
+            <div className="form-check answer-item">
                 <input 
                     className="form-check-input" 
                     type="radio" 
