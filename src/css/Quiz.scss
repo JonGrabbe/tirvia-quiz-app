@@ -1,6 +1,6 @@
 
 .quiz {
-    border: 1px solid lime;
+    // border: 1px solid lime;
     margin: 1rem;
     padding: .5rem;
     .question {
@@ -8,8 +8,9 @@
     }
     .answer-item {
         padding: 1rem;
-        background-color: lightgrey;
+        // background-color: lightgrey;
         max-width: 400px;
+        margin-bottom: 10px;
         // display: flex;
         // flex-direction: column;
         // justify-content: ;

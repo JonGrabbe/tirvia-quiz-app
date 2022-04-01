@@ -45,7 +45,7 @@ class RadioButton extends React.Component {
 
     render() {
         return (
-            <div className="form-check answer-item">
+            <div className="form-check answer-item main-element">
                 <input 
                     className="form-check-input" 
                     type="radio" 
