@@ -5,7 +5,7 @@ import Start from './StartMenu';
 import Header from './header/Header';
 import Quiz from './quiz/Quiz';
 import './css/main.scss';
-import { type } from '@testing-library/user-event/dist/type';
+
 
 
 /* 
@@ -54,7 +54,8 @@ class App extends React.Component {
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
     this.getCurrentQuestionObj = this.getCurrentQuestionObj.bind(this);
-    this.checkAnswer = this.checkAnswer.bind(this); 
+    this.checkAnswer = this.checkAnswer.bind(this);
+    this.checkAnswer2 = this.checkAnswer2.bind(this); 
   }
 
   setData(data) {
@@ -112,9 +113,20 @@ class App extends React.Component {
     let index = this.state.currentQuestion;
     let newObj = this.state.currentQuiz;
     newObj.questions[index].isCorrect = bool;
-    newObj.questions[index].isAnswered = true;
+    // newObj.questions[index].isAnswered = true;
     newObj.questions[index].userAnswer = val;
     console.log(newObj)
+    this.setState({
+      currentQuiz: newObj
+    })
+    this.forceUpdate()
+  }
+
+  checkAnswer2() {
+    // if the user clicked the check answer button allow the next method to go
+    let index = this.state.currentQuestion;
+    let newObj = this.state.currentQuiz;
+    newObj.questions[index].isAnswered = true;
     this.setState({
       currentQuiz: newObj
     })
@@ -124,7 +136,8 @@ class App extends React.Component {
   next() {
     console.log(this.state.currentQuiz.questions.length-1)
     console.log(this.state.currentQuestion)
-    if(this.state.currentQuestion < this.state.currentQuiz.questions.length-1) {
+    let flag = this.getCurrentQuestionObj().isAnswered;
+    if(this.state.currentQuestion < this.state.currentQuiz.questions.length-1 && flag) {
       this.setState(prevState => {
         return {
           currentQuestion: prevState.currentQuestion+1  
@@ -201,6 +214,7 @@ class App extends React.Component {
         currentQuestion={this.state.currentQuestion} 
         next={this.next}
         checkAnswer={this.checkAnswer}
+        checkAnswer2={this.checkAnswer2}
       />
     );
     return (
