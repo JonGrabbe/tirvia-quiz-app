@@ -12,6 +12,9 @@ button {
     padding: 1rem 3rem;
     background-color: $main-color;
     color: $main-text-color;
+    &[disabled] {
+        opacity: .7;
+    }
 }
 
 .main-element {

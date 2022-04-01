@@ -4,7 +4,7 @@ export default function NavButtons(props) {
             <button className="button">
                 prev
             </button>
-            <button className="button" onClick={props.next}>
+            <button className="button" onClick={props.next} disabled={props.question.isAnswered !== true} >
                 next
             </button>
         </div>
