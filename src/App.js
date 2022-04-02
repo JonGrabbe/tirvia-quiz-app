@@ -106,31 +106,36 @@ class App extends React.Component {
     return this.state.currentQuiz.questions[this.state.currentQuestion];
   }
   checkAnswer(e) {
-    let val = e.currentTarget.value;
-    // console.log(val)
-    let bool = this.getCurrentQuestionObj().correct_answer === val;
-    console.log(val, bool)
-    let index = this.state.currentQuestion;
-    let newObj = this.state.currentQuiz;
-    newObj.questions[index].isCorrect = bool;
-    // newObj.questions[index].isAnswered = true;
-    newObj.questions[index].userAnswer = val;
-    console.log(newObj)
-    this.setState({
-      currentQuiz: newObj
-    })
-    this.forceUpdate()
+    if(!this.getCurrentQuestionObj().isAnswered) {
+      let val = e.currentTarget.value;
+      // console.log(val)
+      let bool = this.getCurrentQuestionObj().correct_answer === val;
+      console.log(val, bool)
+      let index = this.state.currentQuestion;
+      let newObj = this.state.currentQuiz;
+      newObj.questions[index].isCorrect = bool;
+      // newObj.questions[index].isAnswered = true;
+      newObj.questions[index].userAnswer = val;
+      console.log(newObj)
+      this.setState({
+        currentQuiz: newObj
+      })
+      this.forceUpdate()
+    }
   }
 
   checkAnswer2() {
-    // if the user clicked the check answer button allow the next method to go
-    let index = this.state.currentQuestion;
-    let newObj = this.state.currentQuiz;
-    newObj.questions[index].isAnswered = true;
-    this.setState({
-      currentQuiz: newObj
-    })
-    this.forceUpdate()
+    // check if question was already check in order to prevent a second try
+    if(!this.getCurrentQuestionObj().isAnswered) {
+      // if the user clicked the check answer button allow the next method to go
+      let index = this.state.currentQuestion;
+      let newObj = this.state.currentQuiz;
+      newObj.questions[index].isAnswered = true;
+      this.setState({
+        currentQuiz: newObj
+      })
+      this.forceUpdate()
+    }
   }
 
   next() {
@@ -146,7 +151,13 @@ class App extends React.Component {
     }
   }
   prev() {
-
+    if(this.state.currentQuestion > 0) {
+      this.setState(prevState => {
+        return {
+          currentQuestion: prevState.currentQuestion - 1  
+        }
+      })
+    }
   }
   startNewQuiz() {
     // pushed object in this.state.currentQuiz into the history array and then removes the object
@@ -213,6 +224,7 @@ class App extends React.Component {
         currentQuiz={this.state.currentQuiz} 
         currentQuestion={this.state.currentQuestion} 
         next={this.next}
+        prev={this.prev}
         checkAnswer={this.checkAnswer}
         checkAnswer2={this.checkAnswer2}
       />

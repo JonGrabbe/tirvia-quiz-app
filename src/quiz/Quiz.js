@@ -33,7 +33,7 @@ export default class Quiz extends React.Component {
                         question={this.state.questionObj} 
                         currentQuestion={this.props.currentQuestion} 
                     />
-                    <NavButtons next={this.props.next} question={this.state.questionObj} />
+                    <NavButtons next={this.props.next} prev={this.props.prev} question={this.state.questionObj} />
                     <button className="button check-answer-button" onClick={this.props.checkAnswer2}>
                         check answer
                     </button>

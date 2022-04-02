@@ -5,9 +5,11 @@ export default function QuestionTypeMultipleChoice(props) {
     return (
         <div className="question-container">
             <p className="question">{props.question.question}</p>
-            {props.question.isCorrect === true ? <p>correct</p> : null}
-            {props.question.isCorrect === false ? <p>incorrect</p> : null}
-            {props.question.isCorrect}
+            <div className="results-container">
+                {props.question.isCorrect === true && props.question.isAnswered ? <p>correct</p> : null}
+                {props.question.isCorrect === false && props.question.isAnswered ? <p>incorrect</p> : null}
+                {/* {props.question.isCorrect} */}
+            </div>
             {
                 props.question.random_answers.map(item => {
                     return <RadioButton value={item} label={item} handleChange={props.handleChange} question={props.question} />
