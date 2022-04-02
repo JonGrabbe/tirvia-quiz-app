@@ -114,7 +114,7 @@ class App extends React.Component {
       let index = this.state.currentQuestion;
       let newObj = this.state.currentQuiz;
       newObj.questions[index].isCorrect = bool;
-      // newObj.questions[index].isAnswered = true;
+      newObj.questions[index].hasUserInputValue = true;
       newObj.questions[index].userAnswer = val;
       console.log(newObj)
       this.setState({
@@ -126,7 +126,7 @@ class App extends React.Component {
 
   checkAnswer2() {
     // check if question was already check in order to prevent a second try
-    if(!this.getCurrentQuestionObj().isAnswered) {
+    if(this.getCurrentQuestionObj().hasUserInputValue && !this.getCurrentQuestionObj().isAnswered) {
       // if the user clicked the check answer button allow the next method to go
       let index = this.state.currentQuestion;
       let newObj = this.state.currentQuiz;
