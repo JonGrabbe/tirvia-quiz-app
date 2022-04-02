@@ -192,8 +192,12 @@ class App extends React.Component {
     this.setState({
       type: val
     })
-
   }
+
+  completeQuiz() {
+    
+  }
+  
 
   componentDidMount() {
     let x = this.state.string();
