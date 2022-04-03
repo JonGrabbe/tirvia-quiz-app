@@ -10,11 +10,29 @@ export default function QuizHistory(props) {
         return scoreNum;
     }
     let QuizScore = getScore();
-    function getCategory() {
+    function checkCommonProperty(propertyName) {
         // returns the catergory of the quiz
-        let prevItem;
-        // props.currentQuiz.questions
+        let isSame = true;
+        let propertyVal;
+        for(let i = 1; i<props.currentQuiz.questions.length; i++) {
+            let questions = props.currentQuiz.questions;
+            let firstVal = questions[0][propertyName];
+            let currentProperty = questions[i][propertyName];
+            if(currentProperty !== firstVal) {
+                isSame = false;
+            }
+        }
+        if(isSame) {
+            propertyVal = props.currentQuiz.questions[0][propertyName]
+            return propertyVal
+        } else {
+            return false
+        }
     }
+    let category = checkCommonProperty("category");
+    category = category ? category : 'any';
+    let type = checkCommonProperty('type');
+    type = type ? type : 'any';
 
     return (
         <div className="quiz-history-container">
@@ -25,7 +43,8 @@ export default function QuizHistory(props) {
                     <div className="tags-container">
                         <Item val={"score: " + QuizScore + " / " + props.currentQuiz.questions.length} />
                         <Item val={"questions: " + props.currentQuiz.questions.length} />
-                        {/* <Item val={"Type: " + prop} /> */}
+                        <Item val={"Category: " + category} />
+                        <Item val={"Question type: " + type } />
                     </div>
                 </div>
 
