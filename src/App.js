@@ -55,7 +55,8 @@ class App extends React.Component {
     this.next = this.next.bind(this);
     this.getCurrentQuestionObj = this.getCurrentQuestionObj.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
-    this.checkAnswer2 = this.checkAnswer2.bind(this); 
+    this.checkAnswer2 = this.checkAnswer2.bind(this);
+    this.completeQuiz = this.completeQuiz.bind(this); 
   }
 
   setData(data) {
@@ -135,6 +136,7 @@ class App extends React.Component {
         currentQuiz: newObj
       })
       this.forceUpdate()
+      this.completeQuiz()
     }
   }
 
@@ -195,13 +197,41 @@ class App extends React.Component {
   }
 
   completeQuiz() {
-    
+    // checks if complete condidtion is true
+      // complete condition means that all the question objects have isAnswered properties set to true
+    // if complete condition is true set isQuizComplete propery to true on the quiz object
+    // this property will be passed down as a prop to components, and those compenents will
+    // conditionly render the data in the history object
+    /* 
+      <QuizHistory history={this.props.history} />
+    */
+      let isComplete = false;
+      let length = this.state.currentQuiz.questions.length;
+      // console.log('length: ', length)
+      let num = 0;
+      this.state.currentQuiz.questions.forEach((item) => {
+        if(item.isAnswered) {
+          num++
+        }
+      })
+      if(num === length) {
+        isComplete = true;
+      }
+      let newObj = this.state.currentQuiz;
+      newObj.isQuizComplete = isComplete;
+      this.setState(prevState => {
+        return {
+          currentQuiz: newObj
+        }
+      })
+      this.forceUpdate()
   }
   
 
   componentDidMount() {
     let x = this.state.string();
     console.log(x)
+    // this.completeQuiz()
   }
 
   logChange(e) {
