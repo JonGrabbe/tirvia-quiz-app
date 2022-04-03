@@ -11,16 +11,24 @@ export default function QuizHistory(props) {
     }
     let QuizScore = getScore();
     function getCategory() {
-        // g
+        // returns the catergory of the quiz
+        let prevItem;
+        // props.currentQuiz.questions
     }
 
     return (
         <div className="quiz-history-container">
             <h2>Complete !</h2>
-            <div>
-                <div className="last-quiz">
-                    {/*  */}
+            <div className="wrapper">
+                <div className="current-quiz-container">
+                    <h3>Current quiz</h3>
+                    <div className="tags-container">
+                        <Item val={"score: " + QuizScore + " / " + props.currentQuiz.questions.length} />
+                        <Item val={"questions: " + props.currentQuiz.questions.length} />
+                        {/* <Item val={"Type: " + prop} /> */}
+                    </div>
                 </div>
+
                 <div className="past-quizes-container">
                     <h3>Past quizes</h3>
                     <div className="past-quiz-item">
@@ -36,7 +44,6 @@ export default function QuizHistory(props) {
                                     "score: " + QuizScore + " / " + props.currentQuiz.questions.length
                                 }
                             </span>
-                            <Item val={category} />
                         </div>
                         }
                     </div>
