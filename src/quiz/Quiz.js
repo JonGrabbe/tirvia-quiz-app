@@ -45,7 +45,7 @@ export default class Quiz extends React.Component {
         } else {
             return (
                 <QuizContainer>
-                    <QuizHistory currentQuiz={this.props.currentQuiz} />
+                    <QuizHistory currentQuiz={this.props.currentQuiz} history={this.props.history} />
                 </QuizContainer>
             )
         }

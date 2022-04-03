@@ -34,6 +34,10 @@ export default function QuizHistory(props) {
     let type = checkCommonProperty('type');
     type = type ? type : 'any';
 
+    function getAverageScore() {
+        
+    }
+
     return (
         <div className="quiz-history-container">
             <h2>Complete !</h2>
@@ -51,20 +55,7 @@ export default function QuizHistory(props) {
                 <div className="past-quizes-container">
                     <h3>Past quizes</h3>
                     <div className="past-quiz-item">
-                        {
-                        <div>
-                            <span className="">
-                                {
-                                    "questions: " + props.currentQuiz.questions.length
-                                }
-                            </span>
-                            <span className="">
-                                {
-                                    "score: " + QuizScore + " / " + props.currentQuiz.questions.length
-                                }
-                            </span>
-                        </div>
-                        }
+                        
                     </div>
                 </div>
                 <div className="score-data">

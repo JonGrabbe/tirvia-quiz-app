@@ -261,6 +261,7 @@ class App extends React.Component {
         prev={this.prev}
         checkAnswer={this.checkAnswer}
         checkAnswer2={this.checkAnswer2}
+        history={this.state.history}
       />
     );
     return (
