@@ -3,6 +3,7 @@ import StartNewQuizButton from "./NewQuizButton";
 import QuestionTypeMultipleChoice from "./QuestionTypeMultipleChoice";
 import NavButtons from "../navbuttons/NavButtons";
 import QuizInfo from "./QuizInfo";
+import QuizHistory from "./QuizHistory";
 
 export default class Quiz extends React.Component {
     constructor(props) {
