@@ -1,8 +1,26 @@
 export default function QuizHistory(props) {
+    function getScore() {
+        // returns how many questions were answered with correct answers so far
+        let scoreNum = 0;
+        props.currentQuiz.questions.forEach(item => {
+            if(item.isCorrect) {
+                scoreNum++
+            }
+        })
+        return scoreNum;
+    }
+    let QuizScore = getScore();
+    function getCategory() {
+        // g
+    }
+
     return (
         <div className="quiz-history-container">
             <h2>Complete !</h2>
             <div>
+                <div className="last-quiz">
+                    {/*  */}
+                </div>
                 <div className="past-quizes-container">
                     <h3>Past quizes</h3>
                     <div className="past-quiz-item">
@@ -15,9 +33,10 @@ export default function QuizHistory(props) {
                             </span>
                             <span className="">
                                 {
-                                    "questions: " + props.currentQuiz.questions.length
+                                    "score: " + QuizScore + " / " + props.currentQuiz.questions.length
                                 }
                             </span>
+                            <Item val={category} />
                         </div>
                         }
                     </div>
@@ -29,3 +48,15 @@ export default function QuizHistory(props) {
         </div>
     )
 }
+
+
+
+function Item(props) {
+    return (
+        <span className="item">
+            {props.val}
+        </span>
+    )
+}
+
+
