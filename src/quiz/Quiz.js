@@ -27,10 +27,46 @@ export default class Quiz extends React.Component {
     render() {
         // let questionObj = this.props.currentQuiz.questions[this.props.currentQuestion];
         // console.log(questionObj)
-        return (
-            <div className="quiz">
+        if(!this.props.currentQuiz.isQuizComplete) {
+            return (
+                <QuizContainer>
+                    <QuestionTypeMultipleChoice 
+                            handleChange={this.props.checkAnswer} 
+                            question={this.state.questionObj} 
+                            currentQuestion={this.props.currentQuestion} 
+                        />
+                        <NavButtons next={this.props.next} prev={this.props.prev} question={this.state.questionObj} />
+                        <button className="button check-answer-button" onClick={this.props.checkAnswer2}>
+                            check answer
+                        </button>
+                        <StartNewQuizButton handleClick={this.props.newQuiz} />
+                </QuizContainer>
+            )
+        } else {
+            return (
+                <QuizContainer>
+                    <QuizHistory />
+                </QuizContainer>
+            )
+        }
+    }
+}
+
+
+function QuizContainer(props) {
+    return (
+        <div className="quiz">
                 <div className="">
-                    <QuizInfo currentQuestionIndex={this.props.currentQuestion} currentQuiz={this.props.currentQuiz} />     
+                    {props.children}
+                </div>
+            </div>
+    )
+}
+
+
+
+
+{/* <QuizInfo currentQuestionIndex={this.props.currentQuestion} currentQuiz={this.props.currentQuiz} />     
                     <QuestionTypeMultipleChoice 
                         handleChange={this.props.checkAnswer} 
                         question={this.state.questionObj} 
@@ -40,9 +76,4 @@ export default class Quiz extends React.Component {
                     <button className="button check-answer-button" onClick={this.props.checkAnswer2}>
                         check answer
                     </button>
-                    <StartNewQuizButton handleClick={this.props.newQuiz} />
-                </div>
-            </div>
-        )
-    }
-}
+                    <StartNewQuizButton handleClick={this.props.newQuiz} /> */}
