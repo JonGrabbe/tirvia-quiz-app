@@ -35,7 +35,14 @@ export default function QuizHistory(props) {
     type = type ? type : 'any';
 
     function getAverageScore() {
-        
+        props.history.forEach(item => {
+
+        })
+    }
+
+
+    if(props.history) {
+        //
     }
 
     return (
@@ -52,15 +59,9 @@ export default function QuizHistory(props) {
                     </div>
                 </div>
 
-                <div className="past-quizes-container">
-                    <h3>Past quizes</h3>
-                    <div className="past-quiz-item">
-                        
-                    </div>
-                </div>
-                <div className="score-data">
-
-                </div>
+                {
+                    props.history.length > 0 ? <PastQuizes history={props.history} /> : null
+                }
             </div>
         </div>
     )
@@ -77,3 +78,13 @@ function Item(props) {
 }
 
 
+function PastQuizes(props) {
+    return (
+        <div className="past-quizes-container">
+            <h3>Past quizes</h3>
+            <div className="past-quiz-item">
+                
+            </div>
+        </div>
+    )
+}
