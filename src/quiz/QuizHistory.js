@@ -73,10 +73,33 @@ function Item(props) {
 
 
 function getAverageScore(arr, propertyName) {
-    function getScore() {
-        
-    }    
+    function getScore(arr) {
+        // returns the number of times the isCorrect propery equals true
+        let num = 0;
+        arr.forEach(item => {
+            if(item.isCorrect) {
+                num++
+            }
+        })
+        return num;
+    }
+    function getAverage(arr) {
+        let total = 0;
+        arr.forEach(item => {
+            total += getScore(item.questions)
+        })
+        return total
+    }   
+    let list = []
+    arr.forEach(item => {
+        list.push(getScore(item.questions))
+    })
+    let average = getAverage(list)
+    console.log('average: ', list, average)
 }
+
+
+
 
 
 function PastQuizes(props) {
