@@ -216,6 +216,7 @@ class App extends React.Component {
       })
       if(num === length) {
         isComplete = true;
+        // calculate score
       }
       let newObj = this.state.currentQuiz;
       newObj.isQuizComplete = isComplete;
