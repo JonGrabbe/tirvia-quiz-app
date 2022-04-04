@@ -1,3 +1,5 @@
+import PastQuizes from "./PastQuizes/PastQuizes";
+
 export default function QuizHistory(props) {
     function getScore() {
         // returns how many questions were answered with correct answers so far
@@ -34,10 +36,6 @@ export default function QuizHistory(props) {
     let type = checkCommonProperty('type');
     type = type ? type : 'any';
 
-
-    if(props.history) {
-        //
-    }
 
     return (
         <div className="quiz-history-container">
@@ -102,16 +100,3 @@ function getAverageScore(arr, propertyName) {
 
 
 
-function PastQuizes(props) {
-    return (
-        <div className="past-quizes-container">
-            <h3>Past quizes</h3>
-            <div className="info-container">
-
-            </div>
-            <div className="past-quiz-item">
-                
-            </div>
-        </div>
-    )
-}
