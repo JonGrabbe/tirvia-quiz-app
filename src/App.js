@@ -162,6 +162,25 @@ class App extends React.Component {
     }
   }
   startNewQuiz() {
+    function checkCommonProperty(arr, propertyName) {
+      // returns the catergory of the quiz
+      let isSame = true;
+      let propertyVal;
+      for(let i = 1; i<arr.length; i++) {
+          let questions = arr.questions;
+          let firstVal = questions[0][propertyName];
+          let currentProperty = questions[i][propertyName];
+          if(currentProperty !== firstVal) {
+              isSame = false;
+          }
+      }
+      if(isSame) {
+          propertyVal = arr[0][propertyName]
+          return propertyVal
+      } else {
+          return false
+      }
+    }
     // pushed object in this.state.currentQuiz into the history array and then removes the object
     //from the currentQuiz property
     this.setState((prevState) => {
@@ -197,6 +216,15 @@ class App extends React.Component {
   }
 
   completeQuiz() {
+    function getScore(arr) {
+      let num = 0;
+      arr.forEach(item => {
+        if(item.isCorrect) {
+          num++
+        }
+      })
+      return num;      
+    }
     // checks if complete condidtion is true
       // complete condition means that all the question objects have isAnswered properties set to true
     // if complete condition is true set isQuizComplete propery to true on the quiz object
@@ -217,9 +245,12 @@ class App extends React.Component {
       if(num === length) {
         isComplete = true;
         // calculate score
+
       }
       let newObj = this.state.currentQuiz;
       newObj.isQuizComplete = isComplete;
+      let newScore = getScore(newObj.questions)
+      newObj.score = newScore;
       this.setState(prevState => {
         return {
           currentQuiz: newObj

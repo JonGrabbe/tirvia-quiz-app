@@ -1,8 +1,8 @@
 export default function PastQuizes(props) {
     let quizes = props.history.map(item => {
         let questions = item.questions.length;
-        let score = getScore()
-        return <PastQuizItem questions={questions} />
+        let score = item.score;
+        return <PastQuizItem questions={questions} score={score} />
     })
     return (
         <div className="past-quizes-container">
@@ -20,7 +20,10 @@ function PastQuizItem(props) {
     return (
         <div className="past-quiz-item">
             <div>
-                {props.questions}
+                questions: {props.questions}
+            </div>
+            <div>
+                Score: {props.score}
             </div>
         </div>
     )
