@@ -46,6 +46,7 @@ export default class Quiz extends React.Component {
             return (
                 <QuizContainer>
                     <QuizHistory currentQuiz={this.props.currentQuiz} history={this.props.history} />
+                    <StartNewQuizButton handleClick={this.props.newQuiz} />
                 </QuizContainer>
             )
         }
