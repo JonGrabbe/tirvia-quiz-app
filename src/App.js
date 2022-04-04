@@ -5,6 +5,7 @@ import Start from './StartMenu';
 import Header from './header/Header';
 import Quiz from './quiz/Quiz';
 import './css/main.scss';
+import checkCommonProperty from './helper-functions/check-common-property';
 
 
 
@@ -89,10 +90,14 @@ class App extends React.Component {
       res.data.results.forEach(item => {
         item.random_answers = getAnswers(item)
       })
+      let category = checkCommonProperty(res.data.results, "category")
+      let type = checkCommonProperty(res.data.results, 'type')
       this.setState({
         currentQuiz: {
           questions: res.data.results,
-          responseCode: res.data.response_code
+          responseCode: res.data.response_code,
+          category: category,
+          type: type
         }
       })
     }
@@ -162,25 +167,6 @@ class App extends React.Component {
     }
   }
   startNewQuiz() {
-    function checkCommonProperty(arr, propertyName) {
-      // returns the catergory of the quiz
-      let isSame = true;
-      let propertyVal;
-      for(let i = 1; i<arr.length; i++) {
-          let questions = arr.questions;
-          let firstVal = questions[0][propertyName];
-          let currentProperty = questions[i][propertyName];
-          if(currentProperty !== firstVal) {
-              isSame = false;
-          }
-      }
-      if(isSame) {
-          propertyVal = arr[0][propertyName]
-          return propertyVal
-      } else {
-          return false
-      }
-    }
     // pushed object in this.state.currentQuiz into the history array and then removes the object
     //from the currentQuiz property
     this.setState((prevState) => {
