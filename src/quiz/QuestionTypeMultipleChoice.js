@@ -6,8 +6,8 @@ export default function QuestionTypeMultipleChoice(props) {
         <div className="question-container">
             <p className="question">{props.question.question}</p>
             <div className="results-container">
-                {props.question.isCorrect === true && props.question.isAnswered ? <p>correct</p> : null}
-                {props.question.isCorrect === false && props.question.isAnswered ? <p>incorrect</p> : null}
+                {props.question.isCorrect === true && props.question.isAnswered ? <ResultMessege isCorrect={true} /> : null}
+                {props.question.isCorrect === false && props.question.isAnswered ? <ResultMessege isCorrect={false} message={props.question.correct_answer} /> : null}
                 {/* {props.question.isCorrect} */}
             </div>
             {
@@ -17,6 +17,25 @@ export default function QuestionTypeMultipleChoice(props) {
             }
         </div>
     )
+}
+
+function ResultMessege(props) {
+    // if true return correct message
+    // if false return incorrect message with correct message
+    if(props.isCorrect) {
+        return (
+            <div className="answer-result-container true">
+                <p>correct</p>
+            </div>
+        )
+    } else {
+        return (
+            <div className="answer-result-container true">
+                <p>wrong</p>
+                <p>correct answer: <span className="correct-answer-text">{props.message}</span> </p>
+            </div>
+        )
+    }
 }
 
 
