@@ -141,7 +141,6 @@ class App extends React.Component {
         currentQuiz: newObj
       })
       this.forceUpdate()
-      this.completeQuiz()
     }
   }
 
@@ -149,6 +148,7 @@ class App extends React.Component {
     console.log(this.state.currentQuiz.questions.length-1)
     console.log(this.state.currentQuestion)
     let flag = this.getCurrentQuestionObj().isAnswered;
+    this.completeQuiz()
     if(this.state.currentQuestion < this.state.currentQuiz.questions.length-1 && flag) {
       this.setState(prevState => {
         return {
