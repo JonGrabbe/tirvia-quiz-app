@@ -77,8 +77,8 @@ class RadioButton extends React.Component {
                     onChange={this.props.handleChange}
                     checked={this.props.question.userAnswer === this.props.value} 
                 />
-                <label className="form-check-label" htmlFor="answers" >
-                    {this.props.value}
+                <label className="form-check-label" htmlFor="answers" dangerouslySetInnerHTML={CreateDangerousHtml(this.props.value)} >
+                    
                 </label>
             </div>
         )
