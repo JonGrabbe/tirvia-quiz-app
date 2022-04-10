@@ -30,6 +30,7 @@ export default class Quiz extends React.Component {
         if(!this.props.currentQuiz.isQuizComplete) {
             return (
                 <QuizContainer>
+                    <QuizInfo currentQuiz={this.props.currentQuiz} currentQuestionIndex={this.props.currentQuestion} />
                     <QuestionTypeMultipleChoice 
                             handleChange={this.props.checkAnswer} 
                             question={this.state.questionObj} 
@@ -57,10 +58,10 @@ export default class Quiz extends React.Component {
 function QuizContainer(props) {
     return (
         <div className="quiz">
-                <div className="">
-                    {props.children}
-                </div>
+            <div className="">
+                {props.children}
             </div>
+        </div>
     )
 }
 

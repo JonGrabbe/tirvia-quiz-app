@@ -1,9 +1,11 @@
 export default function QuizInfo(props) {
     let position = props.currentQuiz.questions.length;
+    let arr = props.currentQuiz.questions;
+    console.log(arr)
     function getScore() {
         // returns how many questions were answered with correct answers so far
         let scoreNum = 0;
-        props.currentQuiz.questions.forEach(item => {
+        arr.forEach(item => {
             if(item.isCorrect) {
                 scoreNum++
             }
@@ -14,10 +16,10 @@ export default function QuizInfo(props) {
     return (
         <div className="quiz-info">
             <div className="info-item">
-                {props.currentQuestionIndex + 1 + ' / ' + position}
+                Question: {props.currentQuestionIndex + 1 + ' / ' + position}
             </div>
             <div className="info-item">
-                {score}
+                Score: {score}
             </div>
         </div>
     )
