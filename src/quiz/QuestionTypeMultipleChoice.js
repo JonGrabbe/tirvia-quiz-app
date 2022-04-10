@@ -1,10 +1,11 @@
 import React from "react";
+import CreateDangerousHtml from "../helper-functions/CreateDangerousHtml";
 
 export default function QuestionTypeMultipleChoice(props) {
 
     return (
         <div className="question-container">
-            <p className="question">{props.question.question}</p>
+            <p className="question" dangerouslySetInnerHTML={CreateDangerousHtml(props.question.question)}></p>
             <div className="results-container">
                 {props.question.isCorrect === true && props.question.isAnswered ? <ResultMessege isCorrect={true} /> : null}
                 {props.question.isCorrect === false && props.question.isAnswered ? <ResultMessege isCorrect={false} message={props.question.correct_answer} /> : null}
