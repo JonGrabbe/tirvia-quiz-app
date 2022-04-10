@@ -21,6 +21,10 @@ export default function QuizInfo(props) {
             <div className="info-item">
                 Score: {score}
             </div>
+            <div className="info-item">
+                {/* category */}
+                {props.questionObj.category}
+            </div>
         </div>
     )
 }
