@@ -27,9 +27,9 @@ export default class Start extends React.Component {
         return(
             <div className="start-menu-container container">
                 <div className="start-menu-form-container row">
-                    <Select handleChange={this.props.getCategoryId}>
+                    <Select handleChange={this.props.getCategoryId} labelId="categories" text="select a category" >
                         <option value="">
-                            category
+                            any
                         </option>
                         {
                             this.state.categories.map(item => {
@@ -37,9 +37,9 @@ export default class Start extends React.Component {
                             })
                         }
                     </Select>
-                    <Select handleChange={this.props.getDifficulty}>
+                    <Select handleChange={this.props.getDifficulty} labelId="difficulty" text="select a difficulty" >
                         <option value="">
-                            difficulty
+                            any
                         </option>
                         {
                             this.state.difficultyLevels.map(item => {
@@ -47,9 +47,9 @@ export default class Start extends React.Component {
                             })
                         }
                     </Select>
-                    <Select handleChange={this.props.getQuestionType}>
+                    <Select handleChange={this.props.getQuestionType} label="type" text="select the type of question" >
                         <option value="">
-                            Type of question
+                            any
                         </option>
                         <Option value="multiple" text="multiple" key="multiple" />
                         <Option value="boolean" text="true or false" key="boolean" />
@@ -68,6 +68,7 @@ export default class Start extends React.Component {
 function Select(props) {
     return (
         <div className="col-md-4 select">
+            <label htmlFor={props.labelId}>{props.text}</label>
             <select className="form-select form-select-sm" aria-label=".form-select-sm example" onChange={props.handleChange}>
                 {props.children}
             </select>

@@ -7,13 +7,22 @@
         }
     }
 }
+.start-menu-form-container {
+    .select {
+        label {
+            width: 100%;
+            text-align: left;
+            
+        }
+    }
+}
 
 .start-new-quiz-container {
-    margin-top: 35rem;
-    position: absolute;
-    bottom: 5vh;
-    left: 0;
-    right: 0;
+    margin-top: 1rem;
+    // position: absolute;
+    // bottom: 5vh;
+    // left: 0;
+    // right: 0;
 }
 .new-quiz-button {
     background-color: $main-color;
