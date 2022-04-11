@@ -19,6 +19,13 @@
         min-height: 100px;
         // overflow: scroll;
     }
+    .form-check {
+        label {
+            width: 80%;
+            height: 100%;
+            display: inline-block;
+        }
+    }
     .answer-item {
         padding: 1rem;
         // background-color: lightgrey;

@@ -71,13 +71,13 @@ class RadioButton extends React.Component {
                 <input 
                     className="form-check-input" 
                     type="radio" 
-                    name={"answers"} 
-                    id="flexRadioDefault1" 
+                    name="answers" 
+                    id={this.props.value} 
                     value={this.props.value} 
                     onChange={this.props.handleChange}
                     checked={this.props.question.userAnswer === this.props.value} 
                 />
-                <label className="form-check-label" htmlFor="answers" dangerouslySetInnerHTML={CreateDangerousHtml(this.props.value)} >
+                <label className="form-check-label" htmlFor={this.props.value} dangerouslySetInnerHTML={CreateDangerousHtml(this.props.value)} >
                     
                 </label>
             </div>
