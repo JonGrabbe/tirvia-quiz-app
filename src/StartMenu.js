@@ -51,11 +51,10 @@ export default class Start extends React.Component {
                         <option value="">
                             Type of question
                         </option>
-                        {
-                            this.state.questionType.map(item => {
-                                return <Option value={item} text={item} key={item} />
-                            })
-                        }
+                        <Option value="multiple" text="multiple" key="multiple" />
+                        <Option value="boolean" text="true or false" key="boolean" />
+                            
+                        
                     </Select>
 
                     <StartNewQuizButton handleClick={this.props.createQuiz} />
