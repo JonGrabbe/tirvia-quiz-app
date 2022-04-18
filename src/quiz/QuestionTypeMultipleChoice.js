@@ -33,7 +33,7 @@ function ResultMessege(props) {
         return (
             <div className="answer-result-container true">
                 <p>wrong</p>
-                <p>correct answer: <span className="correct-answer-text">{props.message}</span> </p>
+                <p>correct answer: <span className="correct-answer-text" dangerouslySetInnerHTML={CreateDangerousHtml(props.message)}></span> </p>
             </div>
         )
     }
