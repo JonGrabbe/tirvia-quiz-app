@@ -3,6 +3,8 @@
     // border: 1px solid lime;
     margin: 1rem;
     padding: .5rem;
+    max-width: 1450px;
+    margin: auto;
     .quiz-info {
         .info-item {
             text-align: left;
@@ -52,3 +54,5 @@
         margin-top: 5px;
     }
 }
+
+@import 'end-quiz'

@@ -21,16 +21,16 @@ export default function PastQuizes(props) {
 function PastQuizItem(props) {
     return (
         <div className="past-quiz-item">
-            <div>
+            <div className="info-item">
                 questions: {props.questions}
             </div>
-            <div>
+            <div className="info-item">
                 Score: {props.score}
             </div>
-            <div>
+            <div className="info-item">
                 category: {props.category}
             </div>
-            <div>
+            <div className="info-item">
                 Type: {props.type}
             </div>
         </div>

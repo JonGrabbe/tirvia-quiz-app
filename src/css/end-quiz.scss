@@ -1,0 +1,29 @@
+.past-quizes-container {
+    h3 {
+        text-align: left;
+        margin-top: 1rem;
+    }
+    .past-quiz-item {
+        background-color: white;
+        margin-top: .5rem;
+        max-width: 450px;
+        .info-item {
+            text-align: left;
+            // display: inline;
+            padding: 6px;
+        }
+    }
+}
+
+.current-quiz-container {
+    h3 {
+        text-align: left;
+        margin-top: 1rem;
+    }
+    .tags-container {
+        .item {
+            display: block;
+            text-align: left;
+        }
+    }
+}
