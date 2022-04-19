@@ -31,7 +31,7 @@ function PastQuizItem(props) {
                 category: {props.category}
             </div>
             <div className="info-item">
-                Type: {props.type}
+                Question Type: {props.type ? props.type : "any"}
             </div>
         </div>
     )
