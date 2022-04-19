@@ -28,7 +28,7 @@ function PastQuizItem(props) {
                 Score: {props.score}
             </div>
             <div className="info-item">
-                category: {props.category}
+                category: {props.category ? props.category : 'any'}
             </div>
             <div className="info-item">
                 Question Type: {props.type ? props.type : "any"}
